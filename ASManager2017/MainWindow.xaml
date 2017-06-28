@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:ASManager2017"
         mc:Ignorable="d"
         Title="AS Manager 2017" Height="600" Width="800">
-    <Window.Effect>
-        <DropShadowEffect/>
-    </Window.Effect>
     <Grid>
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" Height="auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="auto">
             <TabItem Header="Machine Manager">
