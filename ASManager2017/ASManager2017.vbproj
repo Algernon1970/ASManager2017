@@ -54,6 +54,7 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System" />
@@ -72,8 +73,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserManager\AddGroupsCtrl.xaml.vb">
+      <DependentUpon>AddGroupsCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserManager\SingleUserEdit.xaml.vb">
       <DependentUpon>SingleUserEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserManager\userDetails.xaml.vb">
+      <DependentUpon>userDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserManager\UserList.xaml.vb">
       <DependentUpon>UserList.xaml</DependentUpon>
@@ -94,7 +101,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserManager\AddGroupsCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserManager\SingleUserEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserManager\userDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +159,7 @@
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -156,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MachineManager\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

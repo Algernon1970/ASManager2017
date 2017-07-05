@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="AddGroupsCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ASManager2017"
+             mc:Ignorable="d" d:DesignWidth="255" Height="413">
+
+    <GroupBox x:Name="groupBox" Header=" Active Directory Groups" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Height="350" Width="233" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <Grid Height="auto">
+            <ListBox x:Name="grouplistBox" HorizontalAlignment="Stretch" Height="auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="auto" SelectionMode="Extended" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{DynamicResource fadeBrush}"/>
+            <Button x:Name="addButton" Content="Add" HorizontalAlignment="Right" Margin="0,0,22,0" VerticalAlignment="Bottom" Width="75"/>
+            <Button x:Name="button" Content="X" HorizontalAlignment="Right" Margin="0,0,22,0" VerticalAlignment="Top" Width="20" Height="20" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+        </Grid>
+    </GroupBox>
+</UserControl>

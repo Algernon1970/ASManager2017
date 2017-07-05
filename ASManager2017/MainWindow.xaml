@@ -13,7 +13,7 @@
             </TabItem>
             <TabItem Header="User Manager">
                 <Grid Background="#FFE5E5E5">
-                    <local:UserList x:Name="UserLister" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" domainString="as.internal" ouString="OU=AS Users, OU=Ashby School, DC=as, DC=Internal" />
+                    <local:UserList x:Name="UserLister" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" domainString="as.internal" ouString="OU=AS Users, OU=Ashby School, DC=as, DC=Internal" Background="{DynamicResource fadeBrush}" />
                 </Grid>
             </TabItem>
         </TabControl>

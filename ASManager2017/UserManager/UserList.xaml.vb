@@ -66,7 +66,7 @@ Public Class UserList
 
     Private Function DN2Tree(ByVal DNPath As String) As String()
         Dim parts As String() = DNPath.Split(",")
-        Dim strap As String() = reverseArray(parts)
+        Dim strap As String() = arrayReverse(parts)
         Dim ret(strap.Count - 1) As String
         For i As Integer = 0 To strap.Count - 1
             ret(i) = strap(i).Substring(3)

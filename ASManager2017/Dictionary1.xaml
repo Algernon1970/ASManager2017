@@ -3,8 +3,8 @@
     xmlns:local="clr-namespace:ASManager2017">
     
     <LinearGradientBrush x:Key="fadeBrush">
-        <GradientStop Color="Red" Offset="0"/>
-        <GradientStop Color="Gray" Offset="1"/>
+        <GradientStop Color="#FF95A2F5" Offset="0"/>
+        <GradientStop Color="#FFC4C4EA" Offset="1"/>
     </LinearGradientBrush>
     
 </ResourceDictionary>
