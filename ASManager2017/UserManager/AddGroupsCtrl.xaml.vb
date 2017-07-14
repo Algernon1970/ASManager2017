@@ -32,17 +32,20 @@ Public Class AddGroupsCtrl
     End Sub
 
     Public Sub loadGroups()
+        grouplistBox.Items.Clear()
         Dim groupCTX As PrincipalContext = ADTools.getConnection(domainString, ouString)
         Dim gList As List(Of GroupPrincipal) = ADTools.getManagedGroups(groupCTX)
         Dim gsList As New List(Of String)
         For Each grp As GroupPrincipal In gList
             If Not (grp.DistinguishedName.Contains("Staff Groups") Or grp.DistinguishedName.Contains("Subject Groups") Or grp.DistinguishedName.Contains("Tutor Groups")) Then
-                gsList.Add(grp.DisplayName)
+                gsList.Add(grp.Name)
             End If
         Next
+
         gsList.Sort()
-        For Each grp As String In gsList
-            grouplistBox.Items.Add(grp)
+
+        For Each grpn As String In gsList
+            grouplistBox.Items.Add(grpn)
         Next
     End Sub
 

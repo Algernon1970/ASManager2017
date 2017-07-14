@@ -76,6 +76,9 @@
     <Compile Include="UserManager\AddGroupsCtrl.xaml.vb">
       <DependentUpon>AddGroupsCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserManager\PasswordChangeCtl.xaml.vb">
+      <DependentUpon>PasswordChangeCtl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserManager\SingleUserEdit.xaml.vb">
       <DependentUpon>SingleUserEdit.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserManager\AddGroupsCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserManager\PasswordChangeCtl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

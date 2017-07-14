@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ASManager2017"
-             mc:Ignorable="d" d:DesignWidth="255" Height="413">
+             mc:Ignorable="d" d:DesignWidth="350" Height="350">
 
-    <GroupBox x:Name="groupBox" Header=" Active Directory Groups" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Height="350" Width="233" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+    <GroupBox x:Name="groupBox" Header=" Active Directory Groups" HorizontalAlignment="Stretch" Margin="0,0" VerticalAlignment="Stretch" Height="350" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
         <Grid Height="auto">
             <ListBox x:Name="grouplistBox" HorizontalAlignment="Stretch" Height="auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="auto" SelectionMode="Extended" ScrollViewer.VerticalScrollBarVisibility="Visible" Background="{DynamicResource fadeBrush}"/>
             <Button x:Name="addButton" Content="Add" HorizontalAlignment="Right" Margin="0,0,22,0" VerticalAlignment="Bottom" Width="75"/>

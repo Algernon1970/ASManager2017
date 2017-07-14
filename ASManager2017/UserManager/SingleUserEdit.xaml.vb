@@ -2,14 +2,15 @@
 Imports AshbyTools
 
 Public Class SingleUserEdit
+    Dim user As UserPrincipalex
 
-
-    Public Sub loadUser(ByVal user As String)
+    Public Sub loadUser(ByVal username As String)
         AddHandler userDetailsPane.buttonClicked, AddressOf childButtonPressed
-        AddHandler addgrps.addClicked, AddressOf addGroupsevent
-        userNameBox.Text = user
+        AddHandler passwdctl.buttonClicked, AddressOf childButtonPressed
+        AddHandler addgrps.addClicked, AddressOf addGroupsEvent
+        userNameBox.Text = username
         Try
-            loadUserDetails(user)
+            loadUserDetails(username)
         Catch ex As Exception
 
         End Try
@@ -17,8 +18,14 @@ Public Class SingleUserEdit
     End Sub
 
     Private Sub loadUserDetails(ByVal username As String)
-        Dim user As UserPrincipalex = ADTools.getUserPrincipalexbyUsername(userCTX, username)
-        Dim uGrps As List(Of String) = ADTools.getGroupsByUser(user.EmployeeId)
+        user = ADTools.getUserPrincipalexbyUsername(userCTX, username)
+        Dim uGrps As List(Of String) = Nothing
+        Try
+            uGrps = ADTools.getGroupsByUser(user.EmployeeId)
+        Catch ex As Exception
+
+        End Try
+
         employeeIdBox.Text = user.EmployeeId
         displayNameBox.Text = user.DisplayName
         userDetailsPane.GivenName.Text = user.GivenName
@@ -29,9 +36,12 @@ Public Class SingleUserEdit
         userDetailsPane.ProfilePath.Text = user.ProfilePath
         userDetailsPane.Pager.Text = user.pager
         groupListBox.Items.Clear()
-        For Each grp As String In uGrps
-            groupListBox.Items.Add(grp)
-        Next
+        If Not IsNothing(uGrps) Then
+            For Each grp As String In uGrps
+                groupListBox.Items.Add(grp)
+            Next
+        End If
+
     End Sub
 
     Private Sub addGroupsButton_Click(sender As Object, e As RoutedEventArgs) Handles addGroupsButton.Click
@@ -40,7 +50,26 @@ Public Class SingleUserEdit
     End Sub
 
     Private Sub childButtonPressed(ByVal caller As String)
-        MsgBox(caller)
+        If caller.Equals("passwd") Then
+            passwdctl.Visibility = Visibility.Visible
+        ElseIf caller.Equals("passwdcancel") Then
+            passwdctl.Visibility = Visibility.Hidden
+        ElseIf caller.Equals("passwdsave") Then
+            changePassword()
+
+        Else
+            passwdctl.Visibility = Visibility.Hidden
+            MsgBox(caller)
+        End If
+    End Sub
+
+    Private Sub changePassword()
+        Try
+            user.SetPassword(passwdctl.new1PasswordBox.Password)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        passwdctl.Visibility = Visibility.Hidden
     End Sub
 
     Private Sub addGroupsEvent(ByVal glist As List(Of String))

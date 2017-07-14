@@ -8,13 +8,13 @@
         Title="Single User Edit" Height="600" Width="841" Background="{DynamicResource fadeBrush}">
     <Grid Background="{DynamicResource fadeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="521*"/>
-            <RowDefinition Height="49*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="59"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="105*"/>
-            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="318"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Border x:Name="GroupsBorder" BorderBrush="Black" BorderThickness="1" Grid.Column="2" HorizontalAlignment="Stretch" Height="auto" Margin="10,14,10,0" VerticalAlignment="Stretch" Width="auto" CornerRadius="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
@@ -45,21 +45,22 @@
                 <TextBox x:Name="employeeIdBox" HorizontalAlignment="Left" Height="23" Margin="97,3,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" Grid.Column="1"/>
             </Grid>
         </Border>
-        <Border x:Name="DetailBorder" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="435" Margin="10,76,10,0" VerticalAlignment="Stretch" Width="auto" CornerRadius="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+        <Border x:Name="DetailBorder" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="10,76,10,0" VerticalAlignment="Stretch" Width="auto" CornerRadius="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
             <Border.Effect>
                 <DropShadowEffect/>
             </Border.Effect>
         </Border>
-        <Border x:Name="DetailBorder2" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="435" Margin="10,76,10,0" VerticalAlignment="Stretch" Width="auto" CornerRadius="5" Background="{DynamicResource fadeBrush}" Panel.ZIndex="1">
+        <Border x:Name="DetailBorder2" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="10,76,10,0" VerticalAlignment="Stretch" Width="auto" CornerRadius="5" Background="{DynamicResource fadeBrush}" Panel.ZIndex="1">
             <StackPanel Orientation="Vertical">
                 <local:userDetails x:Name="userDetailsPane" Margin="5,5,0,0" />
             </StackPanel>
         </Border>
-        <Button x:Name="addGroupsButton" Content="Add Groups" Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="75"/>
-        <local:AddGroupsCtrl x:Name="addgrps" HorizontalAlignment="Center" VerticalAlignment="Center" Height="405" Width="250" Visibility="Hidden" domainString="as.internal" ouString="OU=AS Groups, OU=Ashby School, DC=as, DC=Internal" Grid.Column="1" Margin="32,98,59,38" Panel.ZIndex="2" MinWidth="248" MinHeight="380">
+        <Button x:Name="addGroupsButton" Content="Add Groups" Grid.Column="2" HorizontalAlignment="Center" Margin="66,19,75,18" Grid.Row="1" VerticalAlignment="Center" Width="74" Height="22"/>
+        <local:AddGroupsCtrl x:Name="addgrps" Visibility="hidden" domainString="as.internal" ouString="OU=AS Groups, OU=Ashby School, DC=as, DC=Internal" Margin="200,86,32,75" Panel.ZIndex="2" Grid.ColumnSpan="2" Height="Auto">
             <local:AddGroupsCtrl.Effect>
                 <DropShadowEffect/>
             </local:AddGroupsCtrl.Effect>
         </local:AddGroupsCtrl>
+        <local:PasswordChangeCtl x:Name="passwdctl" Grid.Column="1" HorizontalAlignment="Left" Margin="23,104,0,0" VerticalAlignment="Top" Panel.ZIndex="2" Visibility="Hidden"/>
     </Grid>
 </Window>
