@@ -18,11 +18,11 @@ Public Class userDetails
     End Sub
 
     Private Sub OpenDocs_Click(sender As Object, e As RoutedEventArgs) Handles OpenDocs.Click
-        RaiseEvent buttonClicked("open")
+        RaiseEvent buttonClicked("openhomedrive")
     End Sub
 
     Private Sub ResetProfile_Click(sender As Object, e As RoutedEventArgs) Handles ResetProfile.Click
-        RaiseEvent buttonClicked("reset")
+        RaiseEvent buttonClicked("resetprofile")
     End Sub
 
     Private Sub SaveButton_Click(sender As Object, e As RoutedEventArgs) Handles SaveButton.Click
@@ -36,5 +36,21 @@ Public Class userDetails
     Private Sub DriveLettercomboBox_DropDownOpened(sender As Object, e As EventArgs) Handles DriveLettercomboBox.DropDownOpened
         Dim driveLetters As List(Of String) = FileOperations.getAvailableDriveLetters()
         DriveLettercomboBox.ItemsSource = driveLetters
+    End Sub
+
+    Private Sub profileVersionComboBox_DropDownOpened(sender As Object, e As EventArgs) Handles profileVersionComboBox.DropDownOpened
+        profileVersionComboBox.Items.Clear()
+        Dim fileNamePart As String = System.IO.Path.GetFileName(ProfilePath.Text)
+        Dim pathPart As String = ProfilePath.Text.Replace(fileNamePart, "")
+
+        Dim dirInfo As New IO.DirectoryInfo(pathPart)
+        Dim flist As IO.DirectoryInfo() = dirInfo.GetDirectories
+
+        For Each fileName As IO.DirectoryInfo In flist
+            If fileName.Name.ToUpper.StartsWith(fileNamePart.ToUpper & ".") Then
+                profileVersionComboBox.Items.Add(System.IO.Path.GetExtension(fileName.Name))
+            End If
+        Next
+
     End Sub
 End Class

@@ -32,6 +32,7 @@
         <ComboBox x:Name="DriveLettercomboBox" HorizontalAlignment="Left" Margin="141,258,0,0" VerticalAlignment="Top" Width="49"/>
         <Button x:Name="mapOneDriveButton" Content="Map OneDrive" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top" Width="100"/>
         <Label x:Name="label7" Content="to" HorizontalAlignment="Left" Margin="115,256,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="profileVersionComboBox" HorizontalAlignment="Left" Margin="508,162,0,0" VerticalAlignment="Top" Width="62"/>
 
     </Grid>
 </UserControl>

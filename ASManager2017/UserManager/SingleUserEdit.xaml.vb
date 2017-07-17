@@ -58,10 +58,44 @@ Public Class SingleUserEdit
             changePassword()
         ElseIf caller.Equals("mapdrive") Then
             callmapdrive()
+        ElseIf caller.Equals("resetprofile") Then
+            resetprofile()
+        ElseIf caller.Equals("openhomedrive") Then
+            openHomeDrive()
         Else
             passwdctl.Visibility = Visibility.Hidden
-            MsgBox(caller)
+            MsgBox("Unknown function " & caller)
         End If
+    End Sub
+
+    Private Sub openHomeDrive()
+        Process.Start("explorer.exe", userDetailsPane.HomeDirectory.Text)
+    End Sub
+    Private Sub resetprofile()
+        Dim profileExt As String = userDetailsPane.profileVersionComboBox.SelectedValue
+        Dim profileLocation As String = userDetailsPane.ProfilePath.Text
+        Dim newPath As String
+        Try
+            If profileExt.EndsWith("old") Then
+                newPath = profileLocation & profileExt.Replace("old", "")
+                If IO.Directory.Exists(newPath) Then
+                    Utils.deleteDir(newPath)
+                End If
+                IO.Directory.Move(newPath & "old", newPath)
+                MsgBox(String.Format("Move {0} to {1}", newPath & "old", newPath))
+            Else
+                newPath = profileLocation & profileExt
+                If IO.Directory.Exists(newPath & "old") Then
+                    Utils.deleteDir(newPath & "old")
+                End If
+                IO.Directory.Move(newPath, newPath & "old")
+                MsgBox(String.Format("Move {0} to {1}", newPath, newPath & "old"))
+            End If
+        Catch ex As Exception
+            MsgBox("Failed to reset profile - " & ex.Message)
+        End Try
+
+        userDetailsPane.profileVersionComboBox.Items.Clear()
     End Sub
 
     Private Sub callmapdrive()
@@ -108,8 +142,12 @@ Public Class SingleUserEdit
     Private Sub DeleteGrpsButton_Click(sender As Object, e As RoutedEventArgs) Handles DeleteGrpsButton.Click
         MsgBox("Deleting " & groupListBox.SelectedItems.Count & " Items")
         For Each grpname In groupListBox.SelectedItems
-            Dim res As String = removeUserFromGroup(groupsCTX, user.SamAccountName, grpname)
+            Dim res As String = removeUserFromGroup(tlGroupsCTX, user.SamAccountName, grpname)
+            If Not res = "ok" Then
+                MsgBox(String.Format("Failed to remove from Group {1} - ({0})", res, grpname))
+            End If
         Next
         loadUserDetails(user.SamAccountName)
     End Sub
+
 End Class
