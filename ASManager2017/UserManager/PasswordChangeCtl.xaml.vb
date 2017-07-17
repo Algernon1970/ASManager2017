@@ -12,7 +12,5 @@
         Else
             MsgBox("Passwords do not match.")
         End If
-
-
     End Sub
 End Class

@@ -23,7 +23,7 @@
             </Border.Effect>
         </Border>
         <Border x:Name="GroupsBorder2" BorderBrush="Black" BorderThickness="1" Grid.Column="2" HorizontalAlignment="Stretch" Height="auto" Margin="10,14,10,0" VerticalAlignment="Stretch" Width="auto" CornerRadius="5" Background="{DynamicResource fadeBrush}" Panel.ZIndex="1">
-            <ListBox x:Name="groupListBox" Margin="10,14,10,10" BorderThickness="0" Grid.Column="2" Background="{x:Null}">
+            <ListBox x:Name="groupListBox" Margin="10,14,10,10" BorderThickness="0" Grid.Column="2" Background="{x:Null}" SelectionMode="Extended">
             </ListBox>
         </Border>
         <Border x:Name="IdentiferBorder" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="57" Margin="10,14,10,0" VerticalAlignment="Top" Width="auto" CornerRadius="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
@@ -55,12 +55,13 @@
                 <local:userDetails x:Name="userDetailsPane" Margin="5,5,0,0" />
             </StackPanel>
         </Border>
-        <Button x:Name="addGroupsButton" Content="Add Groups" Grid.Column="2" HorizontalAlignment="Center" Margin="66,19,75,18" Grid.Row="1" VerticalAlignment="Center" Width="74" Height="22"/>
+        <Button x:Name="addGroupsButton" Content="Add Groups" Grid.Column="2" HorizontalAlignment="Center" Margin="10,10,121,27" Grid.Row="1" VerticalAlignment="Center" Width="84" Height="22"/>
         <local:AddGroupsCtrl x:Name="addgrps" Visibility="hidden" domainString="as.internal" ouString="OU=AS Groups, OU=Ashby School, DC=as, DC=Internal" Margin="200,86,32,75" Panel.ZIndex="2" Grid.ColumnSpan="2" Height="Auto">
             <local:AddGroupsCtrl.Effect>
                 <DropShadowEffect/>
             </local:AddGroupsCtrl.Effect>
         </local:AddGroupsCtrl>
         <local:PasswordChangeCtl x:Name="passwdctl" Grid.Column="1" HorizontalAlignment="Left" Margin="23,104,0,0" VerticalAlignment="Top" Panel.ZIndex="2" Visibility="Hidden"/>
+        <Button x:Name="DeleteGrpsButton" Content="Delete Groups" Grid.Column="2" HorizontalAlignment="Left" Margin="99,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="91"/>
     </Grid>
 </Window>

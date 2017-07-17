@@ -56,11 +56,30 @@ Public Class SingleUserEdit
             passwdctl.Visibility = Visibility.Hidden
         ElseIf caller.Equals("passwdsave") Then
             changePassword()
-
+        ElseIf caller.Equals("mapdrive") Then
+            callmapdrive()
         Else
             passwdctl.Visibility = Visibility.Hidden
             MsgBox(caller)
         End If
+    End Sub
+
+    Private Sub callmapdrive()
+        Dim uName As String = user.SamAccountName
+        Dim dLetter As String = userDetailsPane.DriveLettercomboBox.SelectedValue.ToString.Substring(0, 2)
+        Try
+            Mapper.unmapdrive(dLetter)
+        Catch ex As Exception
+
+        End Try
+        Try
+            Dim url As String = String.Format("https://ashbyschool-my.sharepoint.com/personal/{0}_ashbyschool_org_uk/", uName)
+            If (mapdrive(dLetter, url)) Then
+                Process.Start("explorer.exe", String.Format("{0}\documents", dLetter))
+            End If
+        Catch ex As Exception
+            MsgBox(String.Format("Unable to map {1} ({0})", ex.Message, dLetter))
+        End Try
     End Sub
 
     Private Sub changePassword()
@@ -84,5 +103,13 @@ Public Class SingleUserEdit
             End Try
 
         Next
+    End Sub
+
+    Private Sub DeleteGrpsButton_Click(sender As Object, e As RoutedEventArgs) Handles DeleteGrpsButton.Click
+        MsgBox("Deleting " & groupListBox.SelectedItems.Count & " Items")
+        For Each grpname In groupListBox.SelectedItems
+            Dim res As String = removeUserFromGroup(groupsCTX, user.SamAccountName, grpname)
+        Next
+        loadUserDetails(user.SamAccountName)
     End Sub
 End Class
